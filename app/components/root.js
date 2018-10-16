@@ -1,14 +1,23 @@
 import React from 'react'
+import Navbar from './Navbar'
+import { Route, Switch } from 'react-router-dom';
+import HomeView from './HomeView'
+import AllCampuses from './AllCampuses';
+import AllStudents from './AllStudents';
+import SingleCampus from './SingleCampus';
 
 const Root = () => {
   return (
     <div>
-      <nav>
-        Welcome!
-      </nav>
+      <Navbar />
       <main>
-        <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-        <p>This seems like a nice place to get started with some Routes!</p>
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          {/* <Route path='/students' component={AllStudents} /> */}
+          <Route exact path="/campuses" component={AllCampuses} />
+          <Route exact path="/students" component={AllStudents} />
+          <Route path="/campuses/:campusId" component={SingleCampus} />
+        </Switch>
       </main>
     </div>
   )
